@@ -4,6 +4,12 @@ plugins {
 }
 
 android {
+
+    packagingOptions {
+        resources {
+            excludes += setOf("**/*.xsd")
+        }
+    }
     namespace = "com.example.calculator"
     compileSdk = 36
 
@@ -15,6 +21,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildFeatures{
+        viewBinding = true
     }
 
     buildTypes {
@@ -37,6 +46,7 @@ android {
 
 dependencies {
 
+    implementation("org.mariuszgromada.math:MathParser.org-mXparser:6.1.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
